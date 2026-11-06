@@ -15,6 +15,7 @@ option(TROVE_WARNINGS_AS_ERRORS "Treat warnings as errors" OFF)
 add_library(trove_core STATIC
   src/util.cpp
   src/bloom.cpp
+  src/wal.cpp
 )
 target_include_directories(trove_core PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
 
@@ -35,6 +36,7 @@ if(TROVE_BUILD_TESTS)
   add_executable(trove_tests
     tests/test_main.cpp
     tests/test_units.cpp
+    tests/test_wal.cpp
   )
   target_link_libraries(trove_tests PRIVATE trove_core)
   add_test(NAME trove_tests COMMAND trove_tests)
