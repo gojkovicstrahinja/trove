@@ -1,0 +1,27 @@
+# Build output
+build/
+build-*/
+cmake-build-*/
+out/
+CMakeUserPresets.json
+compile_commands.json
+
+# Binaries / objects
+*.exe
+*.o
+*.obj
+*.a
+*.lib
+*.pdb
+*.ilk
+*.dll
+
+# Editors
+.vscode/
+.idea/
+*.swp
+
+# Local database directories (WAL files plus tables)
+demo/
+data/
+*.log
