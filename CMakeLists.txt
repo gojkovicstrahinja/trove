@@ -10,6 +10,7 @@ if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
 endif()
 
 option(TROVE_BUILD_TESTS "Build the test suite" ON)
+option(TROVE_BUILD_BENCH "Build the benchmark harness" ON)
 option(TROVE_WARNINGS_AS_ERRORS "Treat warnings as errors" OFF)
 
 add_library(trove_core STATIC
@@ -34,6 +35,9 @@ else()
   endif()
 endif()
 
+add_executable(trove src/cli.cpp)
+target_link_libraries(trove PRIVATE trove_core)
+
 if(TROVE_BUILD_TESTS)
   enable_testing()
   add_executable(trove_tests
@@ -45,4 +49,9 @@ if(TROVE_BUILD_TESTS)
   )
   target_link_libraries(trove_tests PRIVATE trove_core)
   add_test(NAME trove_tests COMMAND trove_tests)
+endif()
+
+if(TROVE_BUILD_BENCH)
+  add_executable(trove_bench bench/bench.cpp)
+  target_link_libraries(trove_bench PRIVATE trove_core)
 endif()
