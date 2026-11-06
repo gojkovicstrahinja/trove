@@ -16,6 +16,7 @@ add_library(trove_core STATIC
   src/util.cpp
   src/bloom.cpp
   src/wal.cpp
+  src/sstable.cpp
 )
 target_include_directories(trove_core PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
 
@@ -37,6 +38,7 @@ if(TROVE_BUILD_TESTS)
     tests/test_main.cpp
     tests/test_units.cpp
     tests/test_wal.cpp
+    tests/test_sstable.cpp
   )
   target_link_libraries(trove_tests PRIVATE trove_core)
   add_test(NAME trove_tests COMMAND trove_tests)
